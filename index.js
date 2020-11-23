@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express('');
 const routes = require('./routes/routes')
-const rutina = require('./routes/rutina')
+
 
 //Ajustes
 app.set('port', 4000);
@@ -17,7 +17,7 @@ app.get('/', (req, res) => {
     res.send('Primeros acercameintos a servicios de backend')
 })
 app.use('/api', routes)
-app.use('/api/rutina', rutina)
+
 
 //Ajustes de servidor
 app.listen(app.get('port'), () => {

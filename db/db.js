@@ -6,6 +6,7 @@ const mysqlConnection = mysql.createConnection({
     database: 'br4tgujrft3rpbq7xsaw',
     multipleStatements: true
 })
+
 mysqlConnection.connect(function(err){
     if(err){
         console.log(err);
@@ -16,3 +17,6 @@ mysqlConnection.connect(function(err){
 });
 
 module.exports = mysqlConnection;
+
+
+
