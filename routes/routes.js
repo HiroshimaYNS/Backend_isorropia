@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-
 const mysqConnection = require('../db/db.js');
 
 
@@ -14,7 +13,7 @@ router.post('/usuario_nuevo', (req,res)=>{
         if(err){
             return console.error(err.message)
         }
-        res.json({message: 'Usuario ya existente UwU'})
+        res.json({message: 'Usuario creado correctamente UwU'})
     })
 })
 
@@ -42,7 +41,8 @@ router.get('/valor', (req,res)=>{
 
 //Get receta 
 router.get('/receta', (req,res)=>{
-    mysqConnection.query('SELECT Nombre_Receta, Ingredientes, Pasos, Imagen FROM  Receta', (err, rows, fields)=>{
+    res.header('Access-Control-Allow-Origin', '*');
+    mysqConnection.query('SELECT id_Receta, Nombre_Receta, Ingredientes, Pasos, Imagen FROM  Receta', (err, rows, fields)=>{
         if(!err){
             res.json(rows);
         }else{
@@ -61,4 +61,5 @@ router.get('/ejercicio', (req,res)=>{
         }
     })
 })
+
 module.exports = router;
