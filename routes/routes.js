@@ -19,7 +19,8 @@ router.post('/usuario_nuevo', (req,res)=>{
 
 //GET Usuario
 router.get('/usuario', (req,res)=>{
-    mysqConnection.query('SELECT * FROM Usuario', (err, rows, fields)=>{
+    const { id_Usuario } = req.params;
+    mysqConnection.query('SELECT * FROM Usuario WHERE id=?', [id], (err, rows, fields)=>{
         if(!err){
             res.json(rows);
         }else{
